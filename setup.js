@@ -156,7 +156,7 @@ const ProjectList = [
         url: "old glitch projects/wr game/index.html",
         folder: "Games"
     },
-    { //!get rid of this?
+    {
         url: "old glitch projects/display filters/index.html",
         folder: "Tools"
     },
@@ -244,7 +244,7 @@ const OnixProjectList = [
         name: "replayMod"
     },
     {
-        name: "ReplayModOld"
+        name: "replayModOld"
     },
     {
         name: "winParticles"
@@ -256,37 +256,12 @@ let test1 = 0
 for (let project of OnixProjectList) {
     if (!folders["Onix Client Scripts"]) { folders["Onix Client Scripts"] = [new OnixProject("whatIsOnixClient")] }
     folders["Onix Client Scripts"].push(new OnixProject(project.name))
-    const urlInRepo = "https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Modules/" + project.name + ".lua"
-    checkURLExists(urlInRepo)
-    // console.log("https://raw.githubusercontent.com/OnixClient-Scripts/OnixClient_Scripts/master/Modules/" + project.name + ".lua")
-}
-
-function checkURLExists(url) {
-    return fetch(url)
-        .then(response => {
-            if (response.status === 200) {
-                console.log("yes")
-                return true // URL exists (status code 200 OK)
-            } else if (response.status === 404) {
-                console.log("no")
-                return false // URL doesn't exist (status code 404 Not Found)
-            } else {
-                // Handle other status codes if needed
-                console.log("no")
-                return false
-            }
-        })
-        .catch(error => {
-            console.error("Error checking URL:", error)
-            return false // Error occurred, URL likely doesn't exist
-        })
 }
 
 /* TODO
 be able to determine the order of the folders and projects
 rating value
 "finished" indicator
-add Onix scripts
 
 !FIX TETRIS (why borken)
 */

@@ -135,15 +135,26 @@ function loadProjectsSide() {
             desc.innerText = project.description
             projectElm.append(desc)
 
-            // * add as "open in new tab"
-            // let link = document.createElement("a")
-            // link.href = project.url
-            // link.innerText = "Go to"
-            // projectElm.append(link)
+            // if (project.code) {
+            //     for (let script of project.code) {
+            //         let scriptElm = document.createElement("span")
+            //         scriptElm.innerHTML = script
+            //         projectElm.append(scriptElm)
+            //     }
+            // }
 
-            let test = document.createElement("p")
-            test.innerText = "Open"
-            test.addEventListener("click", function () {
+            projectElm.append(document.createElement("br"))
+
+            let link = document.createElement("a")
+            link.href = project.url
+            link.innerText = "Open in new tab"
+            link.target = "blank"
+            projectElm.append(link)
+
+            let openButton = document.createElement("span")
+            openButton.innerText = "Open"
+            openButton.style.padding = "10px"
+            openButton.addEventListener("click", function () {
                 let oldProject = document.getElementById("openedProject")
                 if (oldProject) { oldProject.remove() }
                 let frame = document.createElement("iframe")
@@ -155,7 +166,7 @@ function loadProjectsSide() {
                     frame.contentDocument.body.style.zoom = 0.75
                 })
             })
-            projectElm.append(test)
+            projectElm.append(openButton)
         }
     }
 }

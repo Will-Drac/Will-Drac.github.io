@@ -10,10 +10,27 @@ class Project {
         for (let meta of document.head.querySelectorAll("meta")) {
             if (meta.name == "description") {
                 this.description = meta.content
-                return
+                break
             }
             this.description = "No Description"
         }
+
+        let scriptSrcs = []
+        let scriptName
+        for (let script of document.body.querySelectorAll("script")) {
+            scriptName = script.attributes[0].value
+            if (!scriptName.includes("librar")) {
+                scriptSrcs.push(scriptName)
+            }
+        }
+        for (let script of document.head.querySelectorAll("script")) {
+            scriptName = script.attributes[0].value
+            if (!scriptName.includes("librar")) {
+                scriptSrcs.push(scriptName)
+            }
+        }
+
+        this.code = scriptSrcs
     }
 }
 
@@ -48,6 +65,21 @@ class OnixProject {
                     else {
                         this.description = "No Description"
                     }
+                }
+            })
+
+        fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Modules/" + name + ".lua")
+            .then(response => {
+                if (response.status === 200) {
+                    this.code = [response.url]
+                }
+                else {
+                    fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Libs/" + name + ".lua")
+                        .then(response => {
+                            if (response.status === 200) {
+                                this.code = [response.url]
+                            }
+                        })
                 }
             })
     }
