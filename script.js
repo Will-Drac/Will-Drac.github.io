@@ -121,6 +121,18 @@ function loadProjectsSide() {
         folderElm.append(projectsInFolder)
 
         for (let project of thisFolder) {
+            const isOnixProject = (project.constructor.name == "OnixProject")
+
+            // thanks chatgpt buddy 🙂
+            function removeAfterLastSlash(inputString) {
+                const lastIndex = inputString.lastIndexOf("/")
+                if (lastIndex !== -1) {
+                    return inputString.substring(0, lastIndex + 1)
+                }
+                return inputString
+            }
+            const folderPath = removeAfterLastSlash(project.url)
+
             const projectElm = document.createElement("div")
             projectElm.id = project.title
             projectElm.classList.add("projectCell")
@@ -135,13 +147,27 @@ function loadProjectsSide() {
             desc.innerText = project.description
             projectElm.append(desc)
 
-            // if (project.code) {
-            //     for (let script of project.code) {
-            //         let scriptElm = document.createElement("span")
-            //         scriptElm.innerHTML = script
-            //         projectElm.append(scriptElm)
-            //     }
-            // }
+            if (project.code) {
+                for (let script of project.code) {
+                    let scriptElm = document.createElement("p")
+                    scriptElm.classList.add("scriptLink")
+
+                    if (isOnixProject) {
+                        scriptElm.innerHTML = "View Script"
+                        scriptElm.addEventListener("click", function () {
+                            window.open(script, "_blank")
+                        })
+                    } else {
+                        scriptElm.innerHTML = script
+                        scriptElm.addEventListener("click", function () {
+                            window.open(folderPath + script, "_blank")
+                        })
+                    }
+
+                    projectElm.append(scriptElm)
+                }
+            }
+            // TODO: fix the style of the scripts
 
             projectElm.append(document.createElement("br"))
 

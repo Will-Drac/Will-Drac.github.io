@@ -19,13 +19,13 @@ class Project {
         let scriptName
         for (let script of document.body.querySelectorAll("script")) {
             scriptName = script.attributes[0].value
-            if (!scriptName.includes("librar")) {
+            if (!scriptName.includes("librar") && !scriptName.includes("https")) {
                 scriptSrcs.push(scriptName)
             }
         }
         for (let script of document.head.querySelectorAll("script")) {
             scriptName = script.attributes[0].value
-            if (!scriptName.includes("librar")) {
+            if (!scriptName.includes("librar") && !scriptName.includes("https")) {
                 scriptSrcs.push(scriptName)
             }
         }
@@ -34,10 +34,13 @@ class Project {
     }
 }
 
+// TODO: glsl?
+
 class OnixProject {
     constructor(name) {
         this.url = "Onix Scripts/pages/" + name + ".html"
 
+        getInfoCalls++
         fetch(this.url)
             .then(response => {
                 if (!response.ok) {
@@ -66,18 +69,28 @@ class OnixProject {
                         this.description = "No Description"
                     }
                 }
+
+                getInfoResponses++
+                if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
             })
 
+        if (name == "whatIsOnixClient") { return } //the what is onix one doesnt have code
+
+        getInfoCalls++
         fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Modules/" + name + ".lua")
             .then(response => {
                 if (response.status === 200) {
                     this.code = [response.url]
+                    getInfoResponses++
+                    if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
                 }
                 else {
                     fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Libs/" + name + ".lua")
                         .then(response => {
                             if (response.status === 200) {
                                 this.code = [response.url]
+                                getInfoResponses++
+                                if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
                             }
                         })
                 }

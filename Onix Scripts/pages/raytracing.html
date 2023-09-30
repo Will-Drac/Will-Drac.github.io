@@ -4,14 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name</title>
-    <meta name="description" content="">
+    <title>Raytracing</title>
+    <meta name="description" content="You're gonna want to see this one...">
     <link rel="stylesheet" href="../OnixScriptsStyle.css">
 </head>
 
 <body>
-    <h1>Name</h1>
-    <p></p>
+    <h1>Raytracing</h1>
+    <p>In all the images and videos you've seen so far, I've been using Minecraft's official ray tracing feature, which
+        is already really cool.</p>
+    <p>But why not make my own?</p>
+    <p>OK, two very good reasons. 1: I can't use the GPU with scripting, which means that it's going to be
+        excruciatingly slow. 2: It's RAY TRACING.</p>
+    <p>So anyways, I did it. Here are the results. As a disclaimer, some of the images you will see were rendered at
+        multiple
+        minutes (in some cases up to over an hour) per frame, even though the effects are drawn over the regular game.
+    </p>
+    <img src="../images/raytracing5.png">
+    <p>Sun shadows</p>
+    <img src="../images/raytracing2.png">
+    <p>A demo of the game's textures being drawn completely using raytracing.</p>
+    <img src="../images/raytracing4.png">
+    <p>A very cheaty depth of field. But hold on, this one's fast:</p>
+    <video controls src="../images/raytracing6.mp4"></video>
+    <br>
+    <img src="../images/raytracing1.png">
+    <p>Completely remade water, using the actual physics of light (except for those caustics, those are fake).</p>
+    <img src="../images/raytracing3.png">
+    <p>Volumetric clouds. This took forever to render.</p>
+    <img src="../images/raytracing7.png">
 </body>
 
 </html>

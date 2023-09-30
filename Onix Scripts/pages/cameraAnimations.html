@@ -4,14 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name</title>
-    <meta name="description" content="">
+    <title>Camera Animations</title>
+    <meta name="description" content="A keyframe camera animation system">
     <link rel="stylesheet" href="../OnixScriptsStyle.css">
 </head>
 
 <body>
-    <h1>Name</h1>
-    <p></p>
+    <h1>Camera Animations</h1>
+    <p>A keyframe animation system for the player's camera. It can be used to do cinematic shots.</p>
+    <p>The controls are a bit of a mess, it causes crashes, and it's very not polished but it's also very cool.</p>
+    <p>The path can be set with keyframes and customized with a couple parameters. It uses Catmull-Rom splines to
+        automatically smooth out the path between keyframes. These splines are also used to smooth out the acceleration
+        between splines, giving you very good control of where the camera is and when. I haven't seen this technique
+        done anywhere else.</p>
+
+    <p>In the below video, I space the keyframes out every 2 seconds, but this doesn't have to be the case. They can be
+        set with millisecond precision.</p>
+
+    <video controls type="video/mp4" src="../images/cameraAnimations1.mp4"></video>
+    <img src="../images/cameraAnimations2.png">
+    <p>-Showing where the camera will be facing at each keyframe.</p>
+    <img src="../images/cameraAnimations3.png">
+    <p>-A more updated view of the controls</p>
 </body>
 
 </html>

@@ -4,14 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name</title>
-    <meta name="description" content="">
+    <title>Block Map</title>
+    <meta name="description" content="Shows the world around you in a top-down view.">
     <link rel="stylesheet" href="../OnixScriptsStyle.css">
 </head>
 
 <body>
-    <h1>Name</h1>
-    <p></p>
+    <h1>Block Map</h1>
+    <p>I just tried this out again before writing this, and wow I forgot how cool this was.</p>
+    <p>This was my first scripting mod, from March 15, 2022.</p>
+    <p>It works by scanning a radius around the player, getting a simple colour for each block then:</p>
+    <ul>
+        <li>if that block is lower than the block directly under the player, darken it for how low it is. This gives a
+            bit
+            of depth perception. (in the image below, you can see that there's a slope down to the lake on the bottom
+            right)
+        </li>
+        <li>if "Light Display" is toggled, darken or lighten the colour based on the light values at that block. (in
+            the
+            image below, you can see 4 torches placed around me)</li>
+    </ul>
+
+    <p>This project was simultaneously super optimized, not optimized as much as it could be, and not optimized enough.
+        In other words, FPS bad.</p>
+
+    <img src="../images/blockMap1.png">
+    <img src="../images/blockMap2.png">
 </body>
 
 </html>

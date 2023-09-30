@@ -101,6 +101,11 @@ canvas {
     border-radius: 5px;
 }
 
+.scriptLink {
+    display: inline;
+    padding: 5px;
+}
+
 a {
     color: silver;
 }

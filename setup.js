@@ -64,10 +64,10 @@ const ProjectList = [
         url: "SHADERS/metaballs/index.html",
         folder: "Generative Art"
     },
-    {
-        url: "old glitch projects/ascii post processing/index.html",
-        folder: "Tools"
-    },
+    // {
+    //     url: "old glitch projects/ascii post processing/index.html",
+    //     folder: "Tools"
+    // },
     {
         url: "SHADERS/3d glasses/index.html",
         folder: "Simulations"
@@ -156,10 +156,10 @@ const ProjectList = [
         url: "old glitch projects/wr game/index.html",
         folder: "Games"
     },
-    {
-        url: "old glitch projects/display filters/index.html",
-        folder: "Tools"
-    },
+    // {
+    //     url: "old glitch projects/display filters/index.html",
+    //     folder: "Tools"
+    // },
     {
         url: "SHADERS/basic gradient/index.html",
         folder: "Generative Art"
@@ -182,6 +182,7 @@ for (let p of ProjectList) {
     getInfo("https://o2flash20.github.io/my-random-projects/" + p.url, p.folder)
 }
 
+// to add Onix stuff: 1) create an html file with the same name as the lua file   2) add that name to this list
 const OnixProjectList = [
     {
         name: "blockToTexture"
@@ -214,16 +215,13 @@ const OnixProjectList = [
         name: "cameraAnimations"
     },
     {
-        name: "cosmetics"
-    },
-    {
         name: "DevBlockLeaker"
     },
     {
         name: "freecam"
     },
     {
-        name: "ImmersiveFirstPerson"
+        name: "ImmersiveFirstPerson2"
     },
     {
         name: "lagSwitch"
@@ -243,12 +241,18 @@ const OnixProjectList = [
     {
         name: "replayMod"
     },
-    {
-        name: "replayModOld"
-    },
+    // {
+    //     name: "replayModOld"
+    // },
     {
         name: "winParticles"
     },
+    {
+        name: "animatedSkin"
+    },
+    {
+        name: "blenderCam"
+    }
 ]
 
 let test = 0
@@ -258,7 +262,8 @@ for (let project of OnixProjectList) {
     folders["Onix Client Scripts"].push(new OnixProject(project.name))
 }
 
-/* TODO
+/* 
+TODO
 be able to determine the order of the folders and projects
 rating value
 "finished" indicator
