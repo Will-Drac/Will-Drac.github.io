@@ -1,7 +1,7 @@
 const ProjectList = [
     {
         url: "distance minimization/index.html",
-        folder: "Simulations",
+        folder: "Tools",
     },
     {
         url: "cloth simulation/index.html",
