@@ -1,8 +1,8 @@
 const ProjectList = [
-    // {
-    //     url: "distance minimization/index.html",
-    //     folder: "Simulations",
-    // },
+    {
+        url: "distance minimization/index.html",
+        folder: "Simulations",
+    },
     {
         url: "cloth simulation/index.html",
         folder: "Simulations",
