@@ -4,6 +4,7 @@
 
 #openedProject {
     position: fixed;
+    z-index: 100;
 }
 
 .projectBox {
@@ -30,6 +31,7 @@ iframe {
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 canvas {
@@ -38,6 +40,56 @@ canvas {
     margin: 0;
     filter: drop-shadow(-10px 0px 14px #000000) brightness(0.5);
     position: fixed;
+}
+
+#main {
+    position: absolute;
+    z-index: 5;
+    width: 65%;
+    left: 0%;
+    top: -55px;
+    padding: 5%;
+    text-align: center;
+}
+
+#welcomeTitle {
+    background: #00beff5c;
+    border-radius: 18px;
+    backdrop-filter: blur(2px);
+    padding: 18px;
+    color: #00ff80;
+}
+
+#introContent {
+    background: #0000005c;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    padding: 11%;
+    color: #00ff80;
+    font-weight: 600;
+}
+
+#controls {
+    position: fixed;
+    top: 93%;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.164);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.controlButton {
+    background-color: #002a31c9;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+}
+
+#animToggleElm {
+    background-color: rgba(255, 0, 0, 0.527);
 }
 
 #searchBox {
@@ -83,6 +135,7 @@ canvas {
 
 .folderCell {
     background-color: #28004e8e;
+    backdrop-filter: blur(10px);
     color: white;
     margin: 5px;
     padding: 3px;
@@ -104,6 +157,12 @@ canvas {
 .scriptLink {
     display: inline;
     padding: 5px;
+}
+
+.openProjectButton {
+    color: silver;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 a {

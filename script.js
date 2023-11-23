@@ -179,6 +179,7 @@ function loadProjectsSide() {
 
             let openButton = document.createElement("span")
             openButton.innerText = "Open"
+            openButton.classList.add("openProjectButton")
             openButton.style.padding = "10px"
             openButton.addEventListener("click", function () {
                 let oldProject = document.getElementById("openedProject")
@@ -202,10 +203,26 @@ document.getElementById("searchKey").addEventListener("change", function () {
     search(document.getElementById("searchKey").value)
 })
 
+document.getElementById("animToggleElm").addEventListener("click", function () {
+    if (ANIMATED) {
+        // blendMode(BLEND)
+        // image(BGStill, 0, 0)
+        document.getElementById("animToggleElm").style.backgroundColor = "rgba(255, 0, 0, 0.527)"
+    } else {
+        document.getElementById("animToggleElm").style.backgroundColor = "rgba(30, 255, 0, 0.527)"
+    }
+    ANIMATED = !ANIMATED
+})
+
+document.getElementById("closeProjectElm").addEventListener("click", function () {
+    document.getElementById("openedProject").remove()
+})
+
 
 // --------------------------------------------
 // --------------------------------------------
 // --------------------------------------------
+let ANIMATED = false
 
 const width = 1920
 const height = 1080
@@ -217,9 +234,14 @@ let shaderElm
 
 let bg
 let noise
+let BGStill
+let panelBGStill
 function preload() {
     bg = loadImage("bg.png")
     noise = loadImage("noise.png")
+
+    BGStill = loadImage("BGStill.png")
+    panelBGStill = loadImage("panelBGStill.png")
 
     gradientShader = loadShader("mouseG.vert", "mouseG.frag")
 }
@@ -232,9 +254,16 @@ function setup() {
     shaderCanvas = createGraphics(400, 800, WEBGL)
     shaderCanvas.canvas.id = "shaderCanvas"
     shaderElm = shaderCanvas.canvas
+
+    // put the still images in, so that the user can see them
+    blendMode(BLEND)
+    image(BGStill, 0, 0)
+    shaderCanvas.image(panelBGStill, -shaderCanvas.width / 2, -shaderCanvas.height / 2, shaderCanvas.width, shaderCanvas.height)
 }
 
 function draw() {
+    if (!ANIMATED) { return }
+
     background(25)
 
     blendMode(BLEND)

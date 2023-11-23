@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "mcgill hackathon 2023/index.html",
+        folder: "Simulations",
+    },
+    {
         url: "distance minimization/index.html",
         folder: "Tools",
     },
