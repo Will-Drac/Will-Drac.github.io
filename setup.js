@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/1 - Particles, lots of them/index.html",
+        folder: "Genuary 2024"
+    },
+    {
         url: "motion extraction/index.html",
         folder: "Tools",
     },
