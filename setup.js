@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/3 - Droste effect/index.html",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/2 - No palettes/index.html",
         folder: "Genuary 2024"
     },
