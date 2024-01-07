@@ -8,6 +8,10 @@ const ProjectList = [
         folder: "Genuary 2024"
     },
     {
+        url: "Genuary 2024/5 - In the style of Vera Molnar/index.html",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/4 - Pixels/index.html",
         folder: "Genuary 2024"
     },
