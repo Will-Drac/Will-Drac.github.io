@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/6 - Screensaver/index.html",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/4 - Pixels/index.html",
         folder: "Genuary 2024"
     },
