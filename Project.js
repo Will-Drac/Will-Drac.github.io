@@ -6,7 +6,7 @@ class Project {
         else {
             this.title = "No Title"
         }
-        this.url = url
+        this.url = "https://o2flash20.github.io/my-random-projects/" + url
         for (let meta of document.head.querySelectorAll("meta")) {
             if (meta.name == "description") {
                 this.description = meta.content
@@ -15,29 +15,12 @@ class Project {
             this.description = "No Description"
         }
 
-        let scriptSrcs = []
-        let scriptName
-        for (let script of document.body.querySelectorAll("script")) {
-            scriptName = script.attributes[0].value
-            if (!scriptName.includes("librar") && !scriptName.includes("https")) {
-                scriptSrcs.push(scriptName)
-            }
-        }
-        for (let script of document.head.querySelectorAll("script")) {
-            scriptName = script.attributes[0].value
-            if (!scriptName.includes("librar") && !scriptName.includes("https")) {
-                scriptSrcs.push(scriptName)
-            }
-        }
-
-        this.code = scriptSrcs
+        this.githubURL = "https://github.com/O2Flash20/my-random-projects/tree/main/" + url
     }
 }
 
-// TODO: glsl?
-
 class OnixProject {
-    constructor(name) {
+    constructor(name, isLib) {
         this.url = "Onix Scripts/pages/" + name + ".html"
 
         getInfoCalls++
@@ -51,8 +34,6 @@ class OnixProject {
             .then(htmlContent => {
                 const parser = new DOMParser()
                 const doc = parser.parseFromString(htmlContent, 'text/html')
-
-                // debugger
 
                 if (doc.head.querySelector("title")) {
                     this.title = doc.head.querySelector("title").innerHTML
@@ -76,24 +57,10 @@ class OnixProject {
 
         if (name == "whatIsOnixClient") { return } //the what is onix one doesnt have code
 
-        getInfoCalls++
-        fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Modules/" + name + ".lua")
-            .then(response => {
-                if (response.status === 200) {
-                    this.code = [response.url]
-                    getInfoResponses++
-                    if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
-                }
-                else {
-                    fetch("https://raw.githubusercontent.com/O2Flash20/My-Onix-Client-Scripts-Folder/main/Libs/" + name + ".lua")
-                        .then(response => {
-                            if (response.status === 200) {
-                                this.code = [response.url]
-                                getInfoResponses++
-                                if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
-                            }
-                        })
-                }
-            })
+        if (isLib) {
+            this.githubURL = "https://github.com/O2Flash20/My-Onix-Client-Scripts-Folder/blob/main/Libs/" + name + ".lua"
+        } else {
+            this.githubURL = "https://github.com/O2Flash20/My-Onix-Client-Scripts-Folder/blob/main/Modules/" + name + ".lua"
+        }
     }
 }

@@ -1,12 +1,12 @@
-let projects = []
 let folders = {}
 let getInfoCalls = 0
 let getInfoResponses = 0
 
-function getInfo(url, folder) {
+// gets the html document of a project and sends it to be turned into a Project
+function getProjectDoc(url, folder) {
     getInfoCalls++
     // thanks chatgpt buddy 🙂
-    fetch(url)
+    fetch("https://o2flash20.github.io/my-random-projects/" + url)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to fetch HTML file: ${response.status} ${response.statusText}`)
@@ -30,58 +30,49 @@ function getInfo(url, folder) {
         })
 }
 
-//! to do it manually, hopefully not needed
-function addProject(url, title, description) {
-    projects.push({
-        url,
-        title,
-        description
-    })
-}
+// !never worked well
+// let scores = []
+// function search(keyword) {
+//     scores = []
+//     // each word
+//     for (let i = 0; i < projects.length; i++) {
+//         const word = projects[i].title + projects[i].description
+//         scores.push(0)
+//         // each letter
+//         for (let j = 0; j < word.length; j++) {
+//             // each letter in the keyword
+//             const offset = 0.01 * j
+//             for (let k = 0; k < keyword.length; k++) {
+//                 if (word[j + k] && keyword[k]) {
+//                     if (word[j + k].toLowerCase() == keyword[k].toLowerCase()) {
+//                         scores[i] += (1 - offset)
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     // scores in corresponding index -> list of indices from highest to lowest scores -> load projects in that order
 
+//     let scoresOrdered = []
+//     let cap = Infinity
+//     for (let i = 0; i < scores.length; i++) {
+//         let bestScore = -1
+//         let bestScoreI = -1
+//         for (let i = 0; i < scores.length; i++) {
+//             if (scores[i] > bestScore && scores[i] < cap) {
+//                 bestScoreI = i
+//                 bestScore = scores[i]
+//             }
+//         }
 
-let scores = []
-function search(keyword) {
-    scores = []
-    // each word
-    for (let i = 0; i < projects.length; i++) {
-        const word = projects[i].title + projects[i].description
-        scores.push(0)
-        // each letter
-        for (let j = 0; j < word.length; j++) {
-            // each letter in the keyword
-            const offset = 0.01 * j
-            for (let k = 0; k < keyword.length; k++) {
-                if (word[j + k] && keyword[k]) {
-                    if (word[j + k].toLowerCase() == keyword[k].toLowerCase()) {
-                        scores[i] += (1 - offset)
-                    }
-                }
-            }
-        }
-    }
-    // scores in corresponding index -> list of indices from highest to lowest scores -> load projects in that order
+//         scoresOrdered.push(bestScoreI)
+//         cap = scores[bestScoreI]
+//     }
 
-    let scoresOrdered = []
-    let cap = Infinity
-    for (let i = 0; i < scores.length; i++) {
-        let bestScore = -1
-        let bestScoreI = -1
-        for (let i = 0; i < scores.length; i++) {
-            if (scores[i] > bestScore && scores[i] < cap) {
-                bestScoreI = i
-                bestScore = scores[i]
-            }
-        }
-
-        scoresOrdered.push(bestScoreI)
-        cap = scores[bestScoreI]
-    }
-
-    console.log(scoresOrdered)
-    loadProjectsSide(scoresOrdered)
-    return scoresOrdered
-}
+//     console.log(scoresOrdered)
+//     loadProjectsSide(scoresOrdered)
+//     return scoresOrdered
+// }
 
 function loadProjectsSide() {
     document.getElementById("loadingMessage").remove()
@@ -121,18 +112,6 @@ function loadProjectsSide() {
         folderElm.append(projectsInFolder)
 
         for (let project of thisFolder) {
-            const isOnixProject = (project.constructor.name == "OnixProject")
-
-            // thanks chatgpt buddy 🙂
-            function removeAfterLastSlash(inputString) {
-                const lastIndex = inputString.lastIndexOf("/")
-                if (lastIndex !== -1) {
-                    return inputString.substring(0, lastIndex + 1)
-                }
-                return inputString
-            }
-            const folderPath = removeAfterLastSlash(project.url)
-
             const projectElm = document.createElement("div")
             projectElm.id = project.title
             projectElm.classList.add("projectCell")
@@ -147,32 +126,19 @@ function loadProjectsSide() {
             desc.innerText = project.description
             projectElm.append(desc)
 
-            if (project.code) {
-                for (let script of project.code) {
-                    let scriptElm = document.createElement("p")
-                    scriptElm.classList.add("scriptLink")
-
-                    if (isOnixProject) {
-                        scriptElm.innerHTML = "View Script"
-                        scriptElm.addEventListener("click", function () {
-                            window.open(script, "_blank")
-                        })
-                    } else {
-                        scriptElm.innerHTML = script
-                        scriptElm.addEventListener("click", function () {
-                            window.open(folderPath + script, "_blank")
-                        })
-                    }
-
-                    projectElm.append(scriptElm)
-                }
+            if (project.githubURL) {
+                let githubElm = document.createElement("p")
+                githubElm.classList.add("githubLink")
+                githubElm.innerText = "Open project in GitHub"
+                githubElm.addEventListener("click", function () {
+                    window.open(project.githubURL, "_blank")
+                })
+                projectElm.append(githubElm)
             }
-            // TODO: fix the style of the scripts
-
-            projectElm.append(document.createElement("br"))
 
             let link = document.createElement("a")
             link.href = project.url
+            link.classList.add("openProjectButton")
             link.innerText = "Open in new tab"
             link.target = "blank"
             projectElm.append(link)
@@ -180,7 +146,7 @@ function loadProjectsSide() {
             let openButton = document.createElement("span")
             openButton.innerText = "Open"
             openButton.classList.add("openProjectButton")
-            openButton.style.padding = "10px"
+            openButton.classList.add("openInIframeButton")
             openButton.addEventListener("click", function () {
                 let oldProject = document.getElementById("openedProject")
                 if (oldProject) { oldProject.remove() }
@@ -189,9 +155,10 @@ function loadProjectsSide() {
                 frame.id = "openedProject"
                 document.body.append(frame)
 
-                frame.addEventListener("load", function () {
-                    frame.contentDocument.body.style.zoom = 0.75
-                })
+                // *helps everything be in-frame of the iframe, but it makes p5 think the cursor is in the wrong spot
+                // frame.addEventListener("load", function () {
+                //     frame.contentDocument.body.style.zoom = 0.75
+                // })
             })
             projectElm.append(openButton)
         }
@@ -204,13 +171,6 @@ document.getElementById("searchKey").addEventListener("change", function () {
 })
 
 document.getElementById("animToggleElm").addEventListener("click", function () {
-    if (ANIMATED) {
-        // blendMode(BLEND)
-        // image(BGStill, 0, 0)
-        document.getElementById("animToggleElm").style.backgroundColor = "rgba(255, 0, 0, 0.527)"
-    } else {
-        document.getElementById("animToggleElm").style.backgroundColor = "rgba(30, 255, 0, 0.527)"
-    }
     ANIMATED = !ANIMATED
 })
 
@@ -220,7 +180,7 @@ document.getElementById("closeProjectElm").addEventListener("click", function ()
 
 
 // --------------------------------------------
-// --------------------------------------------
+// ---------------BACKGROUND-------------------
 // --------------------------------------------
 let ANIMATED = false
 
@@ -415,5 +375,3 @@ function HSVtoRGB(h, s, v) {
         b: Math.round(b * 255)
     }
 }
-
-// TODO Redo search

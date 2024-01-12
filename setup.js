@@ -8,120 +8,120 @@ const ProjectList = [
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/10 - Hexagonal/index.html",
+        url: "Genuary 2024/10 - Hexagonal",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/9 - ASCII/index.html",
+        url: "Genuary 2024/9 - ASCII",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/8 - Chaotic system/index.html",
+        url: "Genuary 2024/8 - Chaotic system",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/7 - Progress bar/index.html",
+        url: "Genuary 2024/7 - Progress bar",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/6 - Screensaver/index.html",
+        url: "Genuary 2024/6 - Screensaver",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/5 - In the style of Vera Molnar/index.html",
+        url: "Genuary 2024/5 - In the style of Vera Molnar",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/4 - Pixels/index.html",
+        url: "Genuary 2024/4 - Pixels",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/3 - Droste effect/index.html",
+        url: "Genuary 2024/3 - Droste effect",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/2 - No palettes/index.html",
+        url: "Genuary 2024/2 - No palettes",
         folder: "Genuary 2024"
     },
     {
-        url: "Genuary 2024/1 - Particles, lots of them/index.html",
+        url: "Genuary 2024/1 - Particles, lots of them",
         folder: "Genuary 2024"
     },
     {
-        url: "motion extraction/index.html",
+        url: "motion extraction",
         folder: "Tools",
     },
     {
-        url: "mcgill hackathon 2023/index.html",
+        url: "mcgill hackathon 2023",
         folder: "Simulations",
     },
     {
-        url: "distance minimization/index.html",
+        url: "distance minimization",
         folder: "Tools",
     },
     {
-        url: "cloth simulation/index.html",
+        url: "cloth simulation",
         folder: "Simulations",
         rating: 4.5
     },
     {
-        url: "RAYCASTING_2/index.html",
+        url: "RAYCASTING_2",
         folder: "3D Renders"
     },
     {
-        url: "G_PROCEDURAL TEXTURES/index.html",
+        url: "G_PROCEDURAL TEXTURES",
         folder: "Tools"
     },
     {
-        url: "WALL DESTRUCTION/index.html",
+        url: "WALL DESTRUCTION",
         folder: "Games"
     },
     {
-        url: "RAYMARCHING/index.html",
+        url: "RAYMARCHING",
         folder: "3D Renders"
     },
     {
-        url: "triangle thing 3 epic boogalee/index.html",
+        url: "triangle thing 3 epic boogalee",
         folder: "Generative Art"
     },
     {
-        url: "trails/index.html",
+        url: "trails",
         folder: "Generative Art"
     },
     {
-        url: "light simulation/index.html",
+        url: "light simulation",
         folder: "Simulations"
     },
     {
-        url: "color guesser/index.html",
+        url: "color guesser",
         folder: "Games"
     },
     {
-        url: "inverse kinematics/inverse/index.html",
+        url: "inverse kinematics/inverse",
         folder: "Simulations"
     },
     {
-        url: "inverse kinematics/forward/index.html",
+        url: "inverse kinematics/forward",
         folder: "Simulations"
     },
     {
-        url: "cyoobcast background/index.html",
+        url: "cyoobcast background",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/infinite pattern/index.html",
+        url: "SHADERS/infinite pattern",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/wind wave/index.html",
+        url: "SHADERS/wind wave",
         folder: "Generative Art"
     },
     {
-        url: "TETRIS/index.html",
+        url: "TETRIS",
         folder: "Games"
     },
     {
-        url: "SHADERS/metaballs/index.html",
+        url: "SHADERS/metaballs",
         folder: "Generative Art"
     },
     // {
@@ -129,91 +129,91 @@ const ProjectList = [
     //     folder: "Tools"
     // },
     {
-        url: "SHADERS/3d glasses/index.html",
+        url: "SHADERS/3d glasses",
         folder: "Simulations"
     },
     {
-        url: "SHADERS/edge detect/index.html",
+        url: "SHADERS/edge detect",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/motion detection shader/index.html",
+        url: "SHADERS/motion detection shader",
         folder: "Tools"
     },
     {
-        url: "SHADERS/webcam rgb shift/index.html",
+        url: "SHADERS/webcam rgb shift",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/motion blur/index.html",
+        url: "SHADERS/motion blur",
         folder: "Generative Art"
     },
     {
-        url: "triangle thing 2 electric boogaloo/index.html",
+        url: "triangle thing 2 electric boogaloo",
         folder: "Generative Art"
     },
     {
-        url: "vtuber2/index.html",
+        url: "vtuber2",
         folder: "Tools"
     },
     {
-        url: "particle system/index.html",
+        url: "particle system",
         folder: "Simulations"
     },
     {
-        url: "old glitch projects/discord big text/index.html",
+        url: "old glitch projects/discord big text",
         folder: "Tools"
     },
     {
-        url: "old glitch projects/canvas game/index.html",
+        url: "old glitch projects/canvas game",
         folder: "Generative Art"
     },
     {
-        url: "smooth noise/index.html",
+        url: "smooth noise",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/blur/index.html",
+        url: "SHADERS/blur",
         folder: "Generative Art"
     },
     {
-        url: "SHADERS/mouse gradient/index.html",
+        url: "SHADERS/mouse gradient",
         folder: "Generative Art"
     },
     {
-        url: "triangle thing/index.html",
+        url: "triangle thing",
         folder: "Generative Art"
     },
     {
-        url: "fake word generator/index.html",
+        url: "fake word generator",
         folder: "Tools"
     },
     {
-        url: "old glitch projects/website learns to write/index.html",
+        url: "old glitch projects/website learns to write",
         folder: "Generative Art"
     },
     {
-        url: "sprite system/index.html",
+        url: "sprite system",
         folder: "Games"
     },
     {
-        url: "old glitch projects/bunger nft/index.html",
+        url: "old glitch projects/bunger nft",
         folder: "Joke Websites"
     },
     {
-        url: "RAYCASTING GAME/versions/4-current/index.html",
+        url: "RAYCASTING GAME/versions/4-current",
+        folder: "3D Renders"
+    },
+    {
+        url: "old glitch projects/game engine",
         folder: "Games"
     },
     {
-        url: "old glitch projects/game engine/index.html",
-        folder: "Games"
-    },
-    {
-        url: "old glitch projects/wrm minecraft music/index.html",
+        url: "old glitch projects/wrm minecraft music",
         folder: "Tools"
     },
     {
-        url: "old glitch projects/wr game/index.html",
+        url: "old glitch projects/wr game",
         folder: "Games"
     },
     // {
@@ -221,25 +221,29 @@ const ProjectList = [
     //     folder: "Tools"
     // },
     {
-        url: "SHADERS/basic gradient/index.html",
+        url: "SHADERS/basic gradient",
         folder: "Generative Art"
     },
     {
-        url: "graphing calculator/index.html",
+        url: "graphing calculator",
         folder: "Tools"
     },
     {
-        url: "old glitch projects/break the cycle/index.html",
+        url: "old glitch projects/break the cycle",
         folder: "Joke Websites"
     },
     {
-        url: "old glitch projects/biscord/index.html",
+        url: "old glitch projects/biscord",
         folder: "Joke Websites"
+    },
+    {
+        url: "old glitch projects/fools cards",
+        folder: "Games"
     }
 ]
 
 for (let p of ProjectList) {
-    getInfo("https://o2flash20.github.io/my-random-projects/" + p.url, p.folder)
+    getProjectDoc(p.url, p.folder)
 }
 
 // to add Onix stuff: 1) create an html file with the same name as the lua file   2) add that name to this list
@@ -251,16 +255,20 @@ const OnixProjectList = [
         name: "cameraEffects"
     },
     {
-        name: "blockToTexture"
+        name: "blockToTexture",
+        lib: "true"
     },
     {
-        name: "cosmeticTools"
+        name: "cosmeticTools",
+        lib: "true"
     },
     {
-        name: "logger"
+        name: "logger",
+        lib: "true"
     },
     {
-        name: "vectors"
+        name: "vectors",
+        lib: "true"
     },
     {
         name: "3dView"
@@ -324,15 +332,13 @@ const OnixProjectList = [
 let test = 0
 let test1 = 0
 for (let project of OnixProjectList) {
+    const isLib = (project.lib == "true")
     if (!folders["Onix Client Scripts"]) { folders["Onix Client Scripts"] = [new OnixProject("whatIsOnixClient")] }
-    folders["Onix Client Scripts"].push(new OnixProject(project.name))
+    folders["Onix Client Scripts"].push(new OnixProject(project.name, isLib))
 }
 
 /* 
 TODO
 be able to determine the order of the folders and projects
 rating value
-"finished" indicator
-
-!FIX TETRIS (why borken)
 */

@@ -1,170 +1,364 @@
-#loadingMessage {
-    text-align: center;
+@media (orientation:landscape) {
+    #loadingMessage {
+        text-align: center;
+    }
+
+    #openedProject {
+        position: fixed;
+        z-index: 100;
+    }
+
+    .projectBox {
+        background-color: rgb(34, 63, 63);
+        color: cyan;
+        border-width: 2px;
+        outline: aqua;
+        position: absolute;
+        width: 500px;
+        /* height: 500px; */
+        border-radius: 35px;
+    }
+
+    iframe {
+        position: absolute;
+        background-color: white;
+        width: 65%;
+        left: 5%;
+        height: 91%;
+        top: 2%;
+        border-radius: 25px;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    canvas {
+        display: block !important;
+        position: absolute;
+        margin: 0;
+        filter: brightness(0.5);
+        position: fixed;
+    }
+
+    #main {
+        position: absolute;
+        z-index: 5;
+        width: 65%;
+        left: 0%;
+        top: -55px;
+        padding: 5%;
+        text-align: center;
+    }
+
+    #welcomeTitle {
+        background: #00beff5c;
+        border-radius: 18px;
+        backdrop-filter: blur(2px);
+        padding: 18px;
+        color: #00ff80;
+    }
+
+    #introContent {
+        background: #0000005c;
+        border-radius: 10px;
+        backdrop-filter: blur(2px);
+        padding: 11%;
+        color: #00ff80;
+        font-weight: 600;
+    }
+
+    #controls {
+        position: fixed;
+        bottom: 0.5%;
+        left: 2%;
+        z-index: 200;
+        background-color: rgba(0, 0, 0, 0.164);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .controlButton {
+        background-color: #002a31c9;
+        padding: 5px;
+        border-radius: 10px;
+        color: white;
+    }
+
+    #animToggleElm {
+        background-color: rgba(255, 0, 0, 0.527);
+    }
+
+    #searchBox {
+        position: absolute;
+        left: 75%;
+        z-index: 4;
+        background-color: rgb(0, 255, 115);
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    #projects {
+        position: absolute;
+        left: 75%;
+        z-index: 2;
+        margin: 1%;
+        width: 23%;
+    }
+
+    #defaultCanvas0 {
+        width: 75% !important;
+        height: 100vh !important;
+    }
+
+    #shaderCanvas {
+        width: 25% !important;
+        height: 100vh !important;
+        left: 75%;
+        filter: drop-shadow(-10px 0px 14px #000000);
+        /* box-shadow: -5px 0px #888888; */
+    }
+
+    .projectDesc {
+        font-size: 12px;
+    }
+
+    .projectCell {
+        background-color: #001d228f;
+        color: white;
+        margin: 10px;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    .folderCell {
+        background-color: #28004e8e;
+        backdrop-filter: blur(10px);
+        color: white;
+        margin: 1.5%;
+        padding: 3%;
+        border-radius: 5px;
+        width: 91%;
+        position: relative;
+    }
+
+    .expandButton {
+        font-size: 20px;
+        background-color: rgba(0, 0, 0, 0.479);
+        margin: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        border-radius: 5px;
+    }
+
+    .githubLink {
+        color: rgb(233, 233, 233);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .openProjectButton {
+        color: silver;
+        /* text-decoration: underline; */
+        cursor: pointer;
+        outline-style: solid;
+        outline-width: 1px;
+        border-radius: 5px;
+        margin: 3px;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+
+    a {
+        color: silver;
+        text-decoration: none;
+    }
 }
 
-#openedProject {
-    position: fixed;
-    z-index: 100;
-}
 
-.projectBox {
-    background-color: rgb(34, 63, 63);
-    color: cyan;
-    border-width: 2px;
-    outline: aqua;
-    position: absolute;
-    width: 500px;
-    /* height: 500px; */
-    border-radius: 35px;
-}
+@media (orientation: portrait) {
+    #loadingMessage {
+        text-align: center;
+    }
 
-iframe {
-    position: absolute;
-    background-color: white;
-    width: 65%;
-    left: 5%;
-    height: 95%;
-    top: 2%;
-    border-radius: 25px;
-}
+    #openedProject {
+        display: none;
+    }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    .projectBox {
+        background-color: rgb(34, 63, 63);
+        color: cyan;
+        border-width: 2px;
+        outline: aqua;
+    }
 
-canvas {
-    display: block !important;
-    position: absolute;
-    margin: 0;
-    filter: drop-shadow(-10px 0px 14px #000000) brightness(0.5);
-    position: fixed;
-}
+    iframe {
+        background-color: white;
+        border-radius: 25px;
+    }
 
-#main {
-    position: absolute;
-    z-index: 5;
-    width: 65%;
-    left: 0%;
-    top: -55px;
-    padding: 5%;
-    text-align: center;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #00ff2a;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-#welcomeTitle {
-    background: #00beff5c;
-    border-radius: 18px;
-    backdrop-filter: blur(2px);
-    padding: 18px;
-    color: #00ff80;
-}
+    canvas {
+        display: block !important;
+        position: absolute;
+        margin: 0;
+        filter: brightness(0.5);
+    }
 
-#introContent {
-    background: #0000005c;
-    border-radius: 10px;
-    backdrop-filter: blur(2px);
-    padding: 11%;
-    color: #00ff80;
-    font-weight: 600;
-}
+    #main {
+        z-index: 5;
+        text-align: center;
+    }
 
-#controls {
-    position: fixed;
-    top: 93%;
-    z-index: 200;
-    background-color: rgba(0, 0, 0, 0.164);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-}
+    #welcomeTitle {
+        background: #00beff5c;
+        border-radius: 18px;
+        backdrop-filter: blur(2px);
+        padding: 18px;
+        color: #00ff80;
+        margin: 10px;
+    }
 
-.controlButton {
-    background-color: #002a31c9;
-    padding: 5px;
-    border-radius: 10px;
-    color: white;
-}
+    #introContent {
+        background: #0000005c;
+        border-radius: 10px;
+        backdrop-filter: blur(2px);
+        padding: 4%;
+        color: #00ff80;
+        font-weight: 600;
+        margin: 20px
+    }
 
-#animToggleElm {
-    background-color: rgba(255, 0, 0, 0.527);
-}
+    #controls {
+        position: fixed;
+        bottom: 1%;
+        left: 1%;
+        z-index: 200;
+        background-color: rgba(0, 0, 0, 0.164);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+    }
 
-#searchBox {
-    position: absolute;
-    left: 75%;
-    z-index: 4;
-    background-color: rgb(0, 255, 115);
-    border-radius: 25px;
-    padding: 10px;
-}
+    .controlButton {
+        background-color: #002a31c9;
+        padding: 5px;
+        border-radius: 10px;
+        color: white;
+    }
 
-#projects {
-    position: absolute;
-    left: 75%;
-    z-index: 2;
-    margin: 10px;
-}
+    #animToggleElm {
+        background-color: rgba(255, 0, 0, 0.527);
+    }
 
-#defaultCanvas0 {
-    width: 75% !important;
-    height: 100vh !important;
-}
+    #closeProjectElm {
+        display: none;
+    }
 
-#shaderCanvas {
-    width: 25% !important;
-    height: 100vh !important;
-    left: 75%;
-    filter: drop-shadow(-10px 0px 14px #000000);
-    /* box-shadow: -5px 0px #888888; */
-}
+    #searchBox {
+        z-index: 4;
+        background-color: rgb(0, 255, 115);
+        border-radius: 25px;
+        padding: 10px;
+    }
 
-.projectDesc {
-    font-size: 12px;
-}
+    #projects {
+        z-index: 2;
+        width: 96%;
+        padding: 3%;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 70px;
+        margin-top: 20px;
+        background: linear-gradient(to right, #00ff2a, #025968, #00d9ff, #025968, #00ff2a);
+        border-radius: 20px;
+    }
 
-.projectCell {
-    background-color: #002a3152;
-    color: white;
-    margin: 5px;
-    padding: 3px;
-    border-radius: 5px;
-}
+    #defaultCanvas0 {
+        top: 0%;
+        position: absolute;
+        z-index: -100;
+        overflow: hidden;
+        width: 100% !important;
+        height: 100% !important;
+    }
 
-.folderCell {
-    background-color: #28004e8e;
-    backdrop-filter: blur(10px);
-    color: white;
-    margin: 5px;
-    padding: 3px;
-    border-radius: 5px;
-    width: 23vw;
-}
+    #shaderCanvas {
+        display: none !important;
+    }
 
-.expandButton {
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.479);
-    margin: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    border-radius: 5px;
-}
+    .projectDesc {
+        font-size: 12px;
+    }
 
-.scriptLink {
-    display: inline;
-    padding: 5px;
-}
+    .projectCell {
+        background-color: #00000077;
+        color: white;
+        margin: 10px;
+        padding: 8px;
+        border-radius: 5px;
+    }
 
-.openProjectButton {
-    color: silver;
-    text-decoration: underline;
-    cursor: pointer;
-}
+    .folderCell {
+        position: relative;
+        background-color: #00354ec2;
+        color: white;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 95%;
+    }
 
-a {
-    color: silver;
+    .expandButton {
+        font-size: 20px;
+        background-color: rgba(0, 0, 0, 0.479);
+        margin: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        border-radius: 5px;
+        font-family: monospace;
+    }
+
+    .githubLink {
+        color: rgb(233, 233, 233);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .openProjectButton {
+        color: silver;
+        cursor: pointer;
+        outline-style: solid;
+        outline-width: 1px;
+        border-radius: 5px;
+        margin: 3px;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+
+    .openInIframeButton {
+        display: none;
+    }
+
+    a {
+        color: silver;
+        text-decoration: none;
+    }
 }
