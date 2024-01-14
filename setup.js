@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/14 - Less than 1KB artwork",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/13 - Wobbly function day",
         folder: "Genuary 2024"
     },
