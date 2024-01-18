@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/17 - Inspired by Islamic art",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/16 - Draw 10 000 of something",
         folder: "Genuary 2024"
     },
