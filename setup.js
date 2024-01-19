@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/19 - Flocking",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/18 - Bauhaus",
         folder: "Genuary 2024"
     },
