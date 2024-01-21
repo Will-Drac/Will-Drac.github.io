@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Trajectory</title>
+    <meta name="description" content="Shows the path that your projectiles will take before you fire them.">
+    <link rel="stylesheet" href="../OnixScriptsStyle.css">
+</head>
+
+<body>
+    <h1>Projectile Trajectory</h1>
+    <p>This mod is an improvement of <a href="./arrowTrail.html">Arrow Trajectory</a>. It automatically turns on or off
+        depending on if you're holding a projectile, changes the trajectory depending on which projectile you're using,
+        shows the trajectory as a line ending in a target, and uses the proper projectile motion equations:</p>
+    <img src="../images/projectileTrajectory2.png" style="width:300px">
+    <img src="../images/projectileTrajectory1.png" style="width:300px">
+    <p>
+        z: The displacement in the vertical direction. In Minecraft, this is actually the y-direction. (m)<br><br>
+        x: The displacement in the x-direction (this is then rotated into Minecraft's z-direction depending on the
+        player's yaw). (m)<br><br>
+        v0: Magnitude of the initial velocity of the projectile. (m/s)<br><br>
+        vt: Magnitude of the terminal (different from final) velocity of the projectile, representing the strength of
+        air resistance. (m/s)<br><br>
+        θ: The player's pitch. <br><br>
+        g: The acceleration due to gravity. (m/s²)<br><br>
+        t: The current time (s).<br><br>
+    </p>
+    <p>The values for these equations were determined partly by trial and error, and partly experimentally, by
+        recording a projectile's position vs. time data in a file and graphing the motion. <a
+            href="../images/projectileTrajectory3.zip">In case you're curious, you can download those graphs by clicking
+            here.</a>
+    </p>
+    <h3>Here are the values determined for each projectile:</h3>
+    <ul>
+        <li>Snowballs and eggs: v0 = 30 m/s, g = 11.5 m/s², vt = 54.5 m/s</li>
+        <li>Ender Pearls: v0 = 45 m/s, g = 22 m/s², NO AIR RESISTANCE</li>
+        <li>Arrows: v0 = 83.6 m/s. g = 11.5 m/s², vt = 54.5 m/s</li>
+    </ul>
+    <p>However, arrows have a small amount of unpredictable randomness.</p>
+    <video controls src="../images/projectileTrajectory4.mp4"></video>
+</body>
+
+</html>
