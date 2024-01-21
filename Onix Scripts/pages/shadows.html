@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadows</title>
+    <meta name="description" content="Real-time shadows in the game, using 3d quads.">
+    <link rel="stylesheet" href="../OnixScriptsStyle.css">
+</head>
+
+<body>
+    <h1>Shadows</h1>
+    <p>One day I had the stupid idea to add shadows to Minecraft through scripting. Stupid, especially because you can't
+        write shaders in scripting.</p>
+    <p>But one thing you can do in scripting is draw three-dimensional textured quadrilaterals into the game. So I made
+        do with what I had. The idea was to render quads into the world, layered on top of the existing terrain, that
+        creates the illusion of things being blocked from the sun.</p>
+    <p>I've drawn a diagram to illustrate my solution:</p>
+    <img src="../images/shadows1.png">
+    <img src="../images/shadows2.png">
+    <p>The shadow tiles texture.</p>
+    <br>
+    <p>Every part of this project was hard, and each one of the text boxes you see above came with a great deal of
+        head-scratching. Dealing with such a huge amount of data was a difficult task, and figuring out how to make it
+        possible to be real-time at all was quite the puzzle. But, I'm proud of it, and I think it turned out well.</p>
+    <video controls src="../images/shadows3.mp4"></video>
+    <p>Performance mode runs at almost the same speed as without the mod enabled.<br> Balanced drops it from 120fps to
+        85fps. High drops it from 120fps to 40fps. <br>Cinematic drops it from 120fps to 20fps with noticeable frame
+        drops.
+    </p>
+</body>
+
+</html>
