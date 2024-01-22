@@ -3,7 +3,7 @@ let getInfoCalls = 0
 let getInfoResponses = 0
 
 // gets the html document of a project and sends it to be turned into a Project
-function getProjectDoc(url, folder) {
+function getProjectDoc(url, folder, rating) {
     getInfoCalls++
     // thanks chatgpt buddy 🙂
     fetch("https://o2flash20.github.io/my-random-projects/" + url)
@@ -23,7 +23,7 @@ function getProjectDoc(url, folder) {
                 folders[folder] = []
             }
 
-            folders[folder].push(new Project(doc, url))
+            folders[folder].push(new Project(doc, url, rating))
 
             getInfoResponses++
             if (getInfoCalls == getInfoResponses) { loadProjectsSide() }
@@ -120,6 +120,25 @@ function loadProjectsSide() {
             let name = document.createElement("p")
             name.innerText = project.title
             projectElm.append(name)
+
+            let rating = document.createElement("span")
+            if (project.rating) {
+                let stars = ""
+                for (let i = 0; i < 5; i++) {
+                    if (i < project.rating) {
+                        stars = stars + "⭐"
+                    } else {
+                        stars = stars + "❌"
+                    }
+                }
+                rating.innerText = stars
+            }
+            else {
+                rating.innerText = "No Rating"
+            }
+            rating.classList.add("ratingBox")
+            projectElm.append(rating)
+            console.log(project.rating)
 
             let desc = document.createElement("p")
             desc.classList.add("projectDesc")

@@ -62,6 +62,7 @@
     }
 
     #introContent {
+        text-align: left;
         background: #0000005c;
         border-radius: 10px;
         backdrop-filter: blur(2px);
@@ -178,6 +179,12 @@
         color: silver;
         text-decoration: none;
     }
+
+    .ratingBox {
+        background-color: #00000057;
+        padding: 5px;
+        border-radius: 8px;
+    }
 }
 
 
@@ -231,6 +238,7 @@
     }
 
     #introContent {
+        text-align: left;
         background: #0000005c;
         border-radius: 10px;
         backdrop-filter: blur(2px);
@@ -360,6 +368,12 @@
     a {
         color: silver;
         text-decoration: none;
+    }
+
+    .ratingBox {
+        background-color: #00000063;
+        padding: 5px;
+        border-radius: 8px;
     }
 }
 

@@ -1,5 +1,5 @@
 class Project {
-    constructor(document, url) {
+    constructor(document, url, rating) {
         if (document.head.querySelector("title")) {
             this.title = document.head.querySelector("title").innerHTML
         }
@@ -16,12 +16,14 @@ class Project {
         }
 
         this.githubURL = "https://github.com/O2Flash20/my-random-projects/tree/main/" + url
+        this.rating = rating
     }
 }
 
 class OnixProject {
-    constructor(name, isLib) {
+    constructor(name, isLib, rating) {
         this.url = "Onix Scripts/pages/" + name + ".html"
+        this.rating = rating
 
         getInfoCalls++
         fetch(this.url)
