@@ -1,5 +1,9 @@
 const ProjectList = [
     {
+        url: "Genuary 2024/21 - Use a library that you haven't used before",
+        folder: "Genuary 2024"
+    },
+    {
         url: "Genuary 2024/20 - Generative typography",
         folder: "Genuary 2024"
     },
