@@ -408,7 +408,7 @@ const OnixProjectList = [
         rating: 2
     },
     {
-        name: "blockMap",
+        name: "minimap2",
         rating: 5
     },
     {
@@ -436,7 +436,7 @@ const OnixProjectList = [
         rating: 2
     },
     {
-        name: "miniMap",
+        name: "minimap3",
         rating: 4
     },
     {
@@ -455,9 +455,6 @@ const OnixProjectList = [
         name: "replayMod",
         rating: 5
     },
-    // {
-    //     name: "replayModOld"
-    // },
     {
         name: "winParticles",
         rating: 1
@@ -483,5 +480,4 @@ for (let project of OnixProjectList) {
 /* 
 TODO
 be able to determine the order of the folders and projects
-rating value
 */
