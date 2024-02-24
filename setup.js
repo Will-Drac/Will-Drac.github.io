@@ -466,6 +466,11 @@ const OnixProjectList = [
     {
         name: "blenderCam",
         rating: 3
+    },
+    {
+        name: "freecamHelper",
+        lib: "true",
+        rating: 2
     }
 ]
 
