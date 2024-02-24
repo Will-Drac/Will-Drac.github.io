@@ -138,7 +138,6 @@ function loadProjectsSide() {
             }
             rating.classList.add("ratingBox")
             projectElm.append(rating)
-            console.log(project.rating)
 
             let desc = document.createElement("p")
             desc.classList.add("projectDesc")
