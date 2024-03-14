@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "pi day 2024",
+        folder: "Simulations",
+        rating: 3
+    },
+    {
         url: "Genuary 2024/22 - Point - line - plane",
         folder: "Genuary 2024",
         rating: 2
