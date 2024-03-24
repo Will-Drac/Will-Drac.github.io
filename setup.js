@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "electric field/2",
+        folder: "Simulations",
+        rating: 5
+    },
+    {
         url: "pi from circumference",
         folder: "Simulations",
         rating: 3
