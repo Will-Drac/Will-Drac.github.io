@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Physics Library</title>
+    <meta name="description" content="A library to get the velocity and the acceleration of the player.">
+    <link rel="stylesheet" href="../OnixScriptsStyle.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body>
+    <h1>Player Physics Library</h1>
+
+    <p>I made this library to be able to quickly get the player's velocity and acceleration vectors. I mention vectors
+        because it uses and even comes with my <a href="vectors.html">vectors library</a>.</p>
+    <p>To get the player's velocity, the position vectors of the last few intervals are saved, then split into two
+        halves. For each half, the average position and time of its points are calculated. Then using the averages of
+        the two halves, velocity is calculated using the equation:
+        $$ {\vec{v} = \frac{\Delta\vec{s}}{\Delta t} = \frac{\vec{s}_{avg2}-\vec{s}_{avg1}}{t_{avg2}-t_{avg1}} } $$
+        where \(\vec{s}\) is the position vector of the player.</p>
+    <p>The averages are done reduce the effect of the small amount of randomness in the player's position. Ideally,
+        \(\Delta\vec{s} = \vec{s}_2-\vec{s}_1\) would be able to be calculated simply from one frame to the next.</p>
+    <p>The drawback is that the velocity calculated lags behind reality a bit, and the more positions used in the
+        average, the smoother the output is, but the more it lags behind.</p>
+    <p>The player's acceleration is calculated the same way, but with velocity points being stored and averaged instead
+        of position:
+        $$ {\vec{a} = \frac{\Delta\vec{v}}{\Delta t} = \frac{\vec{v}_{avg2}-\vec{v}_{avg1}}{t_{avg2}-t_{avg1}} } $$</p>
+    <p>
+        The velocity calculated at a certain time is said to be the velocity at that time, even though it's
+        known to be a bit behind as discussed above.</p>
+</body>
+
+</html>
