@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Trajectory</title>
+    <meta name="description" content="Shows you where you'll hit the ground when falling.">
+    <link rel="stylesheet" href="../OnixScriptsStyle.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body>
+    <h1>Fall Trajectory</h1>
+
+    <p>
+        This mod uses information from my <a href="./playerPhysics.html">Player Physics library</a> to predict where the
+        player will land when falling.
+    </p>
+    <p>
+        It uses the equation
+        $$ {x_f=x_i+v_{ix}t+\frac{1}{2}a_x t^2} $$
+        to do this. See <a href="./pearlTargeter.html">Pearl Targeter</a> for more of this fella. Every frame, it
+        predicts the path in the future and checks it for intersections with blocks. If it finds an intersection, that's
+        where the player will land and it displays that as a target on the screen.
+    </p>
+    <video controls src="../images/fallTrajectory1.mp4">
+</body>
+
+</html>
