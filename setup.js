@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "fractal sin noise",
+        folder: "Generative Art",
+        rating: 3
+    },
+    {
         url: "electric field/2",
         folder: "Simulations",
         rating: 5
