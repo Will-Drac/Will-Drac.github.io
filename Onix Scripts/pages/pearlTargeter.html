@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ender Pearl Targeter</title>
+    <meta name="description"
+        content="Input a target and the mod will tell you where to aim to have your ender pearl land there.">
+    <link rel="stylesheet" href="../OnixScriptsStyle.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body>
+    <h1>Ender Pearl Targeter</h1>
+
+    <p>
+        After figuring out the physics to predict an ender pearl's path, I figured it wouldn't be too hard to do the
+        same thing but in reverse: finding the direction you would need to throw the pearl in to get it to land where
+        you want.
+    </p>
+    <p>
+        Interestingly, is mainly a physics problem, not a programming problem. We could derive formulas to solve for
+        the direction that the player would have to throw the ender peal in.
+    </p>
+    <p>
+        From <a href="./projectileTrajectory.html">Projectile Trajectory</a>, We know:
+    </p>
+    <ul>
+        <li>The initial speed of the ender peal after throwing it: \( v_i = 45m/s\)</li>
+        <li>
+            And the acceleration felt by the ender pearl when in flight. No air resistance, but the downward
+            acceleration due to gravity \( a_y = -22.26m/s^2\)
+        </li>
+    </ul>
+    <p>
+        There's a very handy equation in physics to tell you the final position of a projectile \(x_f\) given the
+        initial position \(x_i\), the initial velocity \(v_{ix}\), the acceleration it feels \(a_x\), and the time it
+        has been flying \(t\).
+        $$ {x_f=x_i+v_{ix}t+\frac{1}{2}a_x t^2} $$
+        This equation is only in the x-direction, but this works for y and z too, of course:
+        $$ {y_f=y_i+v_{iy}t+\frac{1}{2}a_y t^2} $$
+        $$ {z_f=z_i+v_{iz}t+\frac{1}{2}a_z t^2} $$
+    </p>
+
+    <p>
+        The way the game works is that the ender pearl is always thrown at \(45m/s\), but the initial direction of the
+        velocity is the same as the direction that the player is facing. So to find the direction that the player needs
+        to face, we just have to find the initial velocity of the ender pearl, including the direction. This is why it's
+        so helpful to have three equations. If we have the initial velocity in the x, y, and z directions, putting them
+        together gives a 3D vector which has the direction we want.
+    </p>
+
+    <p>
+        When the script tries to solve these equations, some of these variables will be known and some will be unknown.
+        The initial and final positions will be known, since the initial position is just the player's position and the
+        final position is the target. The accelerations are also known. Since there's no air resistance or anything else
+        to interact with the projectile, \(a_x\) and \(a_z\) will be \(0m/s^2\) and \(a_y\) will be the acceleration due
+        to gravity, \(-22.26m/s^2\). So that leaves the initial velocity in all 3 directions and the time it spends in
+        the air unknown.
+    </p>
+    <p>
+        There's a useful bit of wisdom that if you have X unknowns, you need X equations to be able to
+        solve them all. We currently have 4 unknowns but only 3 equations. However, there's still a bit of information I
+        have that isn't being used: We know \(v_i\). It's the magnitude of the vector made by \(v_{ix}\), \(v_{iy}\),
+        and \(v_{iz}\), which means we can write my fourth equation:
+
+        $$ {v_i^2=v_{ix}^2+v_{iy}^2+v_{iz}^2} $$
+    </p>
+    <p>
+        Now all of my unknown can be found. I'm going to start by cleaning up my equations a bit. we can use the
+        notation
+        \(\Delta n = n_f-n_i\) to make them a bit shorter.
+        $$ {\Delta x=v_{ix}t+\frac{1}{2}a_x t^2} $$
+        $$ {\Delta y=v_{iy}t+\frac{1}{2}a_y t^2} $$
+        $$ {\Delta z=v_{iz}t+\frac{1}{2}a_z t^2} $$
+        And as I've said, \(a_x\) and \(a_z\) are known to be \(0m/s^2\), so we can remove the terms with them.
+        $$ {\Delta x=v_{ix}t} $$
+        $$ {\Delta y=v_{iy}t+\frac{1}{2}a_y t^2} $$
+        $$ {\Delta z=v_{iz}t} $$
+        Now you can take many different approaches here, but here's what I've chosen to do.
+        $$ {\Delta x=v_{ix}t \Rightarrow t=\frac{\Delta x}{v_{ix}}} $$
+        $$ {\Delta z=v_{iz}t \Rightarrow t=\frac{\Delta z}{v_{iz}}} $$
+        $$ {t=\frac{\Delta x}{v_{ix}} = \frac{\Delta z}{v_{iz}} \Rightarrow v_{iz}=\frac{\Delta z}{\Delta x} v_{ix}} $$
+
+        $$ {
+        \Delta y=v_{iy}t+\frac{1}{2}a_y t^2
+        \Rightarrow
+        \Delta y=v_{iy}\frac{\Delta x}{v_{ix}}+\frac{1}{2}a_y \frac{\Delta x^2}{v_{ix}^2}
+        } $$
+
+        $$ {v_{iy}\frac{\Delta x}{v_{ix}} = \Delta y - \frac{1}{2}a_y \frac{\Delta x^2}{v_{ix}^2} } $$
+        $$ {
+        v_{iy} = \Delta y \frac{v_{ix}}{\Delta x} - \frac{1}{2}a_y \frac{\Delta x^2}{v_{ix}^2}\frac{v_{ix}}{\Delta x}
+        } $$
+        $$ {v_{iy} = \frac{\Delta y}{\Delta x} v_{ix} - \frac{1}{2}a_y \frac{\Delta x}{v_{ix}}} $$
+
+        Now we have two unknowns in this equation. I want to get rid of \(v_{iy}\) so that I can solve for \(v_{ix}\).
+        This is going to require a quick side-track.
+
+        $$ {
+        v_i^2=v_{ix}^2+v_{iy}^2+v_{iz}^2
+        \Rightarrow
+        v_{iy}^2=v_i^2-v_{ix}^2-v_{iz}^2
+        } $$
+
+        $$ {
+        v_{iz}=\frac{\Delta z}{\Delta x} v_{ix}
+        \Rightarrow
+        v_{iy}^2=v_i^2-v_{ix}^2-(\frac{\Delta z}{\Delta x} v_{ix})^2
+        } $$
+
+        $$ {
+        v_{iy}^2=v_i^2-v_{ix}^2-\frac{\Delta z^2}{\Delta x^2} v_{ix}^2
+        } $$
+
+        $$ {
+        v_{iy}^2 = v_i^2 - (1+\frac{\Delta z^2}{\Delta x^2})v_{ix}^2
+        } $$
+
+        Now we can square both sides of the equation we left and substitute \(v_{iy}^2\) for what we just found, which
+        only
+        has \(v_{ix}\) as an unknown.
+
+        $$ {v_{iy}^2 = (\frac{\Delta y}{\Delta x} v_{ix} - \frac{1}{2}a_y \frac{\Delta x}{v_{ix}})^2} $$
+
+        $$ {
+        v_i^2 - (1+\frac{\Delta z^2}{\Delta x^2})v_{ix}^2
+        =
+        \frac{\Delta y^2}{\Delta x^2}v_{ix}^2-a_y\Delta y+\frac{1}{4}a_y^2\frac{\Delta x^2}{v_{ix}^2}
+        } $$
+
+        And finally we have an equation with only one unknown. All that's left to do is grind out the algebra to solve
+        for it. I'll start by multiplying both sides of the equation by \(v_{ix}^2\) to get rid of it in the denominator
+        of that last term.
+
+        $$ {
+        v_i^2 v_{ix}^2 - (1+\frac{\Delta z^2}{\Delta x^2})v_{ix}^4
+        =
+        \frac{\Delta y^2}{\Delta x^2}v_{ix}^4-a_y v_{ix}^2 \Delta y+\frac{1}{4}a_y^2 \Delta x^2
+        } $$
+
+        $$ {
+        0=
+        (\frac{\Delta y^2}{\Delta x^2}+1+\frac{\Delta z^2}{\Delta x^2})v_{ix}^4
+        +(-a_y\Delta y-v_i^2)v_{ix}^2
+        +\frac{1}{4}a_y^2\Delta x^2
+        } $$
+
+        $$ {
+        0=
+        \frac{\Delta x^2+\Delta y^2+\Delta z^2}{\Delta x^2}v_{ix}^4
+        +(-a_y\Delta y-v_i^2)v_{ix}^2
+        +\frac{1}{4}a_y^2\Delta x^2
+        } $$
+
+        I'll make two quick simplifications here.
+        I'll let \(X = v_{ix}^2\)
+        and \(\Delta d^2=\Delta x^2+\Delta y^2+\Delta z^2\)
+
+        $$ {
+        0=
+        \frac{\Delta d^2}{\Delta x^2}X^2
+        +(-a_y\Delta y-v_i^2)X
+        +\frac{1}{4}a_y^2\Delta x^2
+        } $$
+
+        We can now use the quadratic equation to solve for \(X\).
+
+        $$ {
+        X=\frac{-b\pm \sqrt{b^2-4ac}}{2a}
+        } $$
+
+        Where \(a=\frac{\Delta d^2}{\Delta x^2}\),
+        \(b=-a_y\Delta y-v_i^2\), and
+        \(c=\frac{1}{4}a_y^2\Delta x^2\)
+
+        $$ {
+        X
+        = \frac
+        {
+        a_y\Delta y+v_i^2\pm
+        \sqrt{(-a_y\Delta y-v_i^2)^2-4(\frac{\Delta d^2}{\Delta x^2})(\frac{1}{4}a_y^2\Delta x^2)}
+        }
+        {2\frac{\Delta d^2}{\Delta x^2}}
+        } $$
+
+        Substituting \(v_{ix}^2\) back in and simplifying:
+        $$ {
+        v_{ix}^2
+        = \frac
+        {
+        a_y\Delta y+v_i^2\pm
+        \sqrt{(-a_y\Delta y-v_i^2)^2-\Delta d^2a_y^2}
+        }
+        {2\frac{\Delta d^2}{\Delta x^2}}
+        } $$
+
+        And finally, both sides can be square rooted and \(v_{ix}\) is solved.
+        $$ {
+        v_{ix}
+        = \pm \sqrt{
+        \frac
+        {
+        a_y\Delta y+v_i^2\pm
+        \sqrt{(-a_y\Delta y-v_i^2)^2-\Delta d^2a_y^2}
+        }
+        {2\frac{\Delta d^2}{\Delta x^2}}
+        }
+        } $$
+
+        $$ {
+        v_{ix}
+        = \pm
+        \frac
+        {\sqrt{
+        a_y\Delta y+v_i^2\pm
+        \sqrt{(-a_y\Delta y-v_i^2)^2-\Delta d^2a_y^2}
+        }}
+        {\sqrt{2}\frac{\Delta d}{\Delta x}}
+        } $$
+
+        It's admittedly an ugly-looking equation, so I'm going to keep the \(\Delta d\)s in there to not make it worse.
+        Thankfully, \(v_{iy}\) and \(v_{iz}\) can be expressed way more simply now that \(v_{ix}\) is a known value. In
+        fact, the equations have already been found:
+
+        $$ {v_{iy} = \frac{\Delta y}{\Delta x} v_{ix} - \frac{1}{2}a_y \frac{\Delta x}{v_{ix}}} $$
+        $$ {v_{iz}=\frac{\Delta z}{\Delta x} v_{ix}} $$
+
+        And the time it will spend in the air can also be known:
+        $${
+        t=\frac{\Delta x}{v_{ix}}
+        } $$
+
+        A way to these values to the player in a way they'll understand is dividing them all by some value, then adding
+        them to the player's position and rendering them as a point in the world. Then all the player has to do is aim
+        their crosshair at that point and they'll give the ender pearl the correct velocity.
+    </p>
+    <p>
+        There's still a bit of an issue though. Those two \(\pm\) symbols mean that there are not one but four possible
+        \(v_{ix}\) values, and thus four ways for the player to throw the ender pearl to get it to hit the target. Well,
+        not really. Two of those solutions are genuine: think of throwing a ball at a target in real life. You can throw
+        the ball directly at it or throw it up in the air so that it falls down to it. The other two solutions come from
+        the math not knowing that time only runs forward, and can be discarded. Yeah, seriously.
+    </p>
+
+    <p>So after all that, here's the final product:</p>
+    <video controls src="../images/pearlTargeter1.mp4"></video>
+
+</body>
+
+</html>
