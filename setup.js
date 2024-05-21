@@ -376,6 +376,10 @@ for (let p of ProjectList) {
 // to add Onix stuff: 1) create an html file with the same name as the lua file   2) add that name to this list
 const OnixProjectList = [
     {
+        name: "worldToScreenTest",
+        rating: 4
+    },
+    {
         name: "pearlTargeter",
         rating: 5
     },
