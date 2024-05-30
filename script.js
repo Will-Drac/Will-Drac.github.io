@@ -75,6 +75,8 @@ function getProjectDoc(url, folder, rating) {
 // }
 
 function loadProjectsSide() {
+    document.title = "I N D E X (" + (ProjectList.length + OnixProjectList.length) + ")"
+
     document.getElementById("loadingMessage").remove()
     // document.getElementById("searchBox").style.display = "block" *MIGHT ADD THIS BACK LATER (SEARCH BOX)
 
