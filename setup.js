@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "depth map shadows",
+        folder: "Generative Art",
+        rating: 4
+    },
+    {
         url: "fractal sin noise",
         folder: "Generative Art",
         rating: 3
