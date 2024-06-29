@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "series calculator",
+        folder: "Tools",
+        rating: 4
+    },
+    {
         url: "two-pass blur",
         folder: "Generative Art",
         rating: 4
