@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "jump flooding",
+        folder: "Tools",
+        rating: 4
+    },
+    {
         url: "atmosphere",
         folder: "Simulations",
         rating: 4
@@ -296,7 +301,7 @@ const ProjectList = [
     {
         url: "old glitch projects/discord big text",
         folder: "Tools",
-        rating: 3
+        rating: 2
     },
     {
         url: "old glitch projects/canvas game",
