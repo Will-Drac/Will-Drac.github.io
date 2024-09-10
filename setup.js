@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "longitudinal wave",
+        folder: "Simulations",
+        rating: 3
+    },
+    {
         url: "water surface simulation",
         folder: "Simulations",
         rating: 5
