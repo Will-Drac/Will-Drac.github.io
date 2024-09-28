@@ -170,7 +170,7 @@ const ProjectList = [
         rating: 4
     },
     {
-        url: "motion extraction",
+        url: "motion extraction/screen",
         folder: "Tools",
         rating: 4
     },
