@@ -1,5 +1,10 @@
 const ProjectList = [
     {
+        url: "polynomial solver",
+        folder: "Tools",
+        rating: 5
+    },
+    {
         url: "longitudinal wave",
         folder: "Simulations",
         rating: 3
