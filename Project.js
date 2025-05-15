@@ -6,7 +6,7 @@ class Project {
         else {
             this.title = "No Title"
         }
-        this.url = "https://o2flash20.github.io/my-random-projects/" + url
+        this.url = "https://will-drac.github.io/my-random-projects/" + url
         for (let meta of document.head.querySelectorAll("meta")) {
             if (meta.name == "description") {
                 this.description = meta.content
@@ -15,7 +15,7 @@ class Project {
             this.description = "No Description"
         }
 
-        this.githubURL = "https://github.com/O2Flash20/my-random-projects/tree/main/" + url
+        this.githubURL = "https://github.com/will-drac/my-random-projects/tree/main/" + url
         this.rating = rating
     }
 }
@@ -60,9 +60,9 @@ class OnixProject {
         if (name == "whatIsOnixClient") { return } //the what is onix one doesnt have code
 
         if (isLib) {
-            this.githubURL = "https://github.com/O2Flash20/My-Onix-Client-Scripts-Folder/blob/main/Libs/" + name + ".lua"
+            this.githubURL = "https://github.com/will-drac/My-Onix-Client-Scripts-Folder/blob/main/Libs/" + name + ".lua"
         } else {
-            this.githubURL = "https://github.com/O2Flash20/My-Onix-Client-Scripts-Folder/blob/main/Modules/" + name + ".lua"
+            this.githubURL = "https://github.com/will-drac/My-Onix-Client-Scripts-Folder/blob/main/Modules/" + name + ".lua"
         }
     }
 }

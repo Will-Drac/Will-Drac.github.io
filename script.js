@@ -6,7 +6,7 @@ let getInfoResponses = 0
 function getProjectDoc(url, folder, rating) {
     getInfoCalls++
     // thanks chatgpt buddy 🙂
-    fetch("https://o2flash20.github.io/my-random-projects/" + url)
+    fetch("https://will-drac.github.io/my-random-projects/" + url)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to fetch HTML file: ${response.status} ${response.statusText}`)
